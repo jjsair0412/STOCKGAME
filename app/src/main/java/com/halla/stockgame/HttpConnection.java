@@ -9,10 +9,10 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 public class HttpConnection {
-    String ReciveUrl ="http://myipadd:port/"; // 전체 db정보 받아오는 주소
-    String SendUrl = "http://myipadd:port/"; // 바뀐 주가 서버로 올려주는 주소
-    String StockPriceUrl = "http://myipadd:port/"; // 종목이름에맞는 주가 받아오는 주소
-    String BuyStockPriceUrl = "http://myipadd:port/";
+    String ReciveUrl =BuildConfig.RECIVEURL; // 전체 db정보 받아오는 주소
+    String SendUrl = BuildConfig.SENDURL; // 바뀐 주가 서버로 올려주는 주소
+    String StockPriceUrl = BuildConfig.STOCKPRICEURL; // 종목이름에맞는 주가 받아오는 주소
+    String BuyStockPriceUrl = BuildConfig.BUYSTOCKPRICEURL;
 
     private OkHttpClient client;
     private static HttpConnection instance = new HttpConnection();

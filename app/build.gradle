@@ -2,11 +2,17 @@ plugins {
     id 'com.android.application'
 }
 
+def Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 android {
     compileSdkVersion 30
     buildToolsVersion "29.0.3"
 
     defaultConfig {
+        buildConfigField "String", "RECIVEURL", properties['ReciveUrl']
+        buildConfigField "String", "SENDURL", properties['SendUrl']
+        buildConfigField "String", "STOCKPRICEURL", properties['StockPriceUrl']
+        buildConfigField "String", "BUYSTOCKPRICEURL", properties['BuyStockPriceUrl']
         applicationId "com.halla.stockgame"
         minSdkVersion 16
         targetSdkVersion 30
