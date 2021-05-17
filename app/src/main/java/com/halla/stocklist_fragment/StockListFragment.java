@@ -38,12 +38,6 @@ public class StockListFragment extends Fragment {
 
     private Thread thread;
 
-    String stock_name; //서버로가는 종목이름
-    String stock_price; //서버로가는 종목가격
-
-    String stockname; //리스트뷰에 뿌려줄 종목이름
-    String stockprice; //리스트뷰에 뿌려줄 종목가격
-
     String receive; // 서버에서 받아온 값들 저장하는 receive
 
     JSONArray jsonArray = new JSONArray();
@@ -66,15 +60,10 @@ public class StockListFragment extends Fragment {
         adapter = new myAdapter();
         listView.setAdapter(adapter);
 
-        ServerReciveStockInfo();
+        ServerReciveStockInfo(thread);
 
         listView.setOnItemClickListener(itemClickListener);
         return view;
-    }
-
-
-    private void runOnUiThread(Runnable runnable){
-        handler.post(runnable);
     }
 
 
@@ -96,7 +85,7 @@ public class StockListFragment extends Fragment {
 
 
 
-    private void ServerReciveStockInfo() {
+    private void ServerReciveStockInfo(Thread thread) {
         if (thread != null)
             thread.interrupt(); // 스레드에 인터럽트
 
@@ -113,7 +102,7 @@ public class StockListFragment extends Fragment {
                 while (true) { // while 무한반복
                     runOnUiThread(runnable); // Main이 아닌곳에서 ui를 수정하기 위해 runonuithread 사용해 runnable 실행
                     try {
-                        thread.sleep(1000); // 1초마다 반복
+                        Thread.sleep(1000); // 1초마다 반복
                     } catch (InterruptedException ie) { // InterruptedException이 생기면
                         ie.printStackTrace();
                         break; // while문 빠져나옴
@@ -123,6 +112,11 @@ public class StockListFragment extends Fragment {
         });
         thread.start(); // 스레드 시작
     }
+
+    private void runOnUiThread(Runnable runnable){
+        handler.post(runnable);
+    }
+
 
 
     @Override
@@ -189,20 +183,13 @@ public class StockListFragment extends Fragment {
                         @Override
                         public void run() {
                             try {
-                                String body = response.body().string();
+                                String body = response.body().toString();
                                 Log.d("onResponse", "서버에서 응답한 Body:" + body);
 
 
-                                StringReader realbody = new StringReader(body); // 읽어온 body를 StringReader로 전환
-                                BufferedReader reader = new BufferedReader(realbody);
-                                String str;
-                                StringBuffer buffer = new StringBuffer();
-                                while ((str = reader.readLine()) != null) {
-                                    buffer.append(str);
-                                }
-                                receive = buffer.toString();
+                                receive = getResponse(body);
 
-                                jsonArray = new JSONArray(receive);
+                                jsonArray = new JSONArray(receive); //json이 아닌 클래스로 받아오는 형식으로.
                                 final int numberOfItemsInResp = jsonArray.length();
 
                                 JSONObject jsonObject = null;
@@ -211,8 +198,8 @@ public class StockListFragment extends Fragment {
 
                                 for (int i = 0; i < numberOfItemsInResp; i++) {
                                     jsonObject = jsonArray.getJSONObject(i);
-                                    stockname = jsonObject.getString("stock_name");
-                                    stockprice = jsonObject.getString("stock_price");
+                                    String stockname = jsonObject.getString("stock_name");
+                                    String stockprice = jsonObject.getString("stock_price");
                                     stocklist.add(new StockSampleData(stockname, stockprice));
                                 }
                                 adapter.notifyDataSetChanged(); // 어뎁터에 값이 변화되었다고 알림
@@ -224,51 +211,20 @@ public class StockListFragment extends Fragment {
                 }
             });
 
-//            String body = response.body().string();
-//            Log.d("onResponse", "서버에서 응답한 Body:"+body);
-//
-//            stocklist.clear(); // stocklist 초기화 무한스크롤 버그 해결
-//
-//            StringReader realbody = new StringReader(body); // 읽어온 body를 StringReader로 전환
-//            BufferedReader reader = new BufferedReader(realbody);
-//            String str;
-//            StringBuffer buffer = new StringBuffer();
-//            while ((str = reader.readLine()) != null) {
-//                buffer.append(str);
-//            }
-//            receive = buffer.toString();
-//
-//            try {
-//                jsonArray = new JSONArray(receive);
-//                final int numberOfItemsInResp = jsonArray.length();
-//                for(int i = 0; i<numberOfItemsInResp; i++) {
-//                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-//                    stockname = jsonObject.getString("stock_name");
-//                    stockprice = jsonObject.getString("stock_price");
-//
-//                    stocklist.add(new StockSampleData(stockname,stockprice));
-//
-//                    handler.postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            runOnUiThread(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    adapter.notifyDataSetChanged(); // 어뎁터에 값이 변화되었다고 알림
-//                                }
-//                            });
-//                        }
-//                    },0);
-//
-//                }
-//
-//            }catch (JSONException e){
-//                e.printStackTrace();
-//            }
-
 
         }
     };
 
+    private String getResponse(String body) throws IOException {
+
+        StringReader realbody = new StringReader(body); // 읽어온 body를 StringReader로 전환
+        BufferedReader reader = new BufferedReader(realbody);
+        String str;
+        StringBuffer buffer = new StringBuffer();
+        while ((str = reader.readLine()) != null) {
+            buffer.append(str);
+        }
+        return buffer.toString();
+    }
 
 }
