@@ -1,4 +1,4 @@
-package com.halla.stockgame;
+package com.halla.stocklist_fragment;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,11 +7,15 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.halla.stockgame.DBHelper;
+import com.halla.stockgame.MainActivity;
+import com.halla.stockgame.R;
+import com.halla.stockgame.fragment_my_invest;
+import com.halla.stocklist_fragment.StockListFragment;
 
 public class Stockinfo extends AppCompatActivity {
 
@@ -19,7 +23,7 @@ public class Stockinfo extends AppCompatActivity {
     private FragmentManager fragmentManager = getSupportFragmentManager();
 
     private StockListFragment stockListFragment = new StockListFragment(); // 주식종목리스트 프레그먼트
-    private fragment_my_invest fragment_my_invest = new fragment_my_invest(); // 투자내역 (내정보) 프레그먼트
+    private com.halla.stockgame.fragment_my_invest fragment_my_invest = new fragment_my_invest(); // 투자내역 (내정보) 프레그먼트
 
     TextView MyMoneyView;
 

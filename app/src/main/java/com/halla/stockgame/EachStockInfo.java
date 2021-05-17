@@ -18,6 +18,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.halla.stocklist_fragment.Stockinfo;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -150,7 +151,7 @@ public class EachStockInfo extends AppCompatActivity {
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EachStockInfo.this,Stockinfo.class);
+                Intent intent = new Intent(EachStockInfo.this, Stockinfo.class);
                 startActivity(intent);
             }
         });

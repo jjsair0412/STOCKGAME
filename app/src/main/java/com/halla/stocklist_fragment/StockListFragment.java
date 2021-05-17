@@ -1,4 +1,4 @@
-package com.halla.stockgame;
+package com.halla.stocklist_fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+
+import com.halla.stockgame.EachStockInfo;
+import com.halla.stockgame.HttpConnection;
+import com.halla.stockgame.R;
+import com.halla.stockgame.StcokinfoSub;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -80,7 +85,7 @@ public class StockListFragment extends Fragment {
             Log.d("실험", "onItemClick: "+ob);
             String ob2 = ob.toString();
 
-            Intent intent = new Intent(getContext(),EachStockInfo.class);
+            Intent intent = new Intent(getContext(), EachStockInfo.class);
             intent.putExtra("stockname", ob2);
 
             startActivity(intent);

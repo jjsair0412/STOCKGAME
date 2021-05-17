@@ -1,4 +1,4 @@
-package com.halla.stockgame;
+package com.halla.stocklist_fragment;
 
 public class StockSampleData {
     public String stockname;

@@ -13,4 +13,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="main_menu_button_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:background">@drawable/main_menu_buttom_shape</item>
+    </style>
 </resources>

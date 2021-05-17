@@ -16,7 +16,7 @@
         tools:targetApi="m">
         <activity android:name=".Main_MyStockInvest"></activity>
         <activity android:name=".EachStockInfo" />
-        <activity android:name=".Stockinfo" />
+        <activity android:name="com.halla.stocklist_fragment.Stockinfo" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
