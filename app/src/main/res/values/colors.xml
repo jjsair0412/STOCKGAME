@@ -7,5 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="pure_trans">#00FFFFFF</color>
     <color name="start_button">#D376FDFD</color>
+    <color name="back_button_color">#474343</color>
 </resources>
