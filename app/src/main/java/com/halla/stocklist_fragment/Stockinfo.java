@@ -52,8 +52,7 @@ public class Stockinfo extends AppCompatActivity {
                 switch (item.getItemId()) {
 
                     case R.id.page_1: { // bottomnavilayout에 page_1이 클릭되었을때(왼쪽부터 첫번째)
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class); // main으로 넘어감
-                        startActivity(intent);
+                        finish();
                         break;
                     }
 

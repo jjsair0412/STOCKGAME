@@ -4,21 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/default_bg"
     tools:context="com.halla.stocklist_fragment.Stockinfo"
     android:orientation="vertical">
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/buy_or_drop_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/StockInfoLayout"
+        >
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
+            <ImageButton
+                android:id="@+id/BackBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/pure_trans"
+                android:src="@drawable/back_button_30"
+                android:text="이전화면으로"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.appcompat.widget.Toolbar>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="내 현재 시드"
-        android:textSize="20dp"
-        android:id="@+id/MyMoneyView"/>
+        android:orientation="horizontal"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내 현재 시드 : "
+            android:textColor="@color/default_text_color"
+            android:textSize="20dp"
+            android:id="@+id/MyMoneyText"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="내 현재 시드"
+            android:textColor="@color/default_text_color"
+            android:layout_marginLeft="5sp"
+            android:textSize="20dp"
+            android:id="@+id/MyMoneyView"/>
+    </LinearLayout>
 
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/fram_layout"
@@ -29,8 +66,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@color/white"
-            app:itemIconTint="@color/purple_200"
+            android:background="@color/bottom_nav_bg_color"
+            app:itemIconTint="@color/white"
             app:itemTextColor="@color/black"
             app:menu="@menu/bottomnavilayout" />
 

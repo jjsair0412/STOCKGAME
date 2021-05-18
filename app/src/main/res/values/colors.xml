@@ -8,6 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="pure_trans">#00FFFFFF</color>
-    <color name="start_button">#D376FDFD</color>
+    <color name="start_button">#D3363E3E</color>
+    <color name="default_bg">#363E3E</color>
+    <color name="default_text_color">#FFFFFFFF</color>
+    <color name="buy_or_drop_text_color">#F6BC48</color>
+    <color name="buy_or_drop_button_color">#2A2E4E</color>
+    <color name="bottom_nav_bg_color">#4C5167</color>
     <color name="back_button_color">#474343</color>
 </resources>

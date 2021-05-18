@@ -1,32 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment_my_invest"
-    android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buylist"
-        android:hint="매수한종목"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/interestRatelist"
-        android:hint="매수한종목"/>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+    android:orientation="vertical"
+    android:background="@color/default_bg"
+    >
+    <LinearLayout
+        android:id="@+id/buy_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/interest_layout"
+        >
+        <TextView
+            android:id="@+id/buylist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="@color/default_text_color"
+            android:paddingVertical="10dp"
+            android:text="매수 종목"/>
         <ListView
             android:id="@+id/MyInvestListView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
 
-    </FrameLayout>
+    <LinearLayout
+        android:id="@+id/interest_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@id/buy_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        tools:layout_editor_absoluteY="0dp">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/interestRatelist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/default_text_color"
+            android:textSize="20dp"
+            android:paddingVertical="10dp"
+            android:text="매수 종목"/>
+
+        <ListView
+            android:id="@+id/MyInterestListView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

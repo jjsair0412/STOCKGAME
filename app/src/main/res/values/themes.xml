@@ -15,8 +15,25 @@
     </style>
     <style name="main_menu_button_style">
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">150dp</item>
         <item name="android:layout_margin">10dp</item>
+        <item name="android:textColor">@color/default_text_color</item>
         <item name="android:background">@drawable/main_menu_buttom_shape</item>
+    </style>
+    <style name="buy_or_drop_title_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/default_text_color</item>
+    </style>
+    <style name="buy_or_drop_value_style">
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/buy_or_drop_text_color</item>
     </style>
 </resources>

@@ -1,4 +1,4 @@
-    package com.halla.stockgame;
+package com.halla.stockgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
